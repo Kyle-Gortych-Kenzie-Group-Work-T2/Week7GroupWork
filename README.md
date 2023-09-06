@@ -8,20 +8,6 @@
 
 descript
 
-## Changes
-<details>
-<summary>Diff with original branch</summary>
-
-<details>
-<summary>blank.java</summary>
- 
-```diff
-blank
-```
-</details>
-
-</details>
-
 <div align="center">
  
 ### :hammer_and_wrench: Tools :
