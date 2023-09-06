@@ -1,0 +1,14 @@
+{
+  "tests": [
+    {
+      "name": "Groupwork RackMonitor Unit Tests",
+      "setup": "",
+      "run": "./gradlew groupwork-rackmonitor-test",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": null
+    }
+  ]
+}
