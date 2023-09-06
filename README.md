@@ -35,7 +35,9 @@ blank
 
 ### Gradle Commands 
 
-* `./gradlew groupwork-retailbook-test` - Run Unit Tests for Retail Book Group Activity
+```console
+./gradlew groupwork-rackmonitor-test
+```
 <br>
 
 <a href="your-gmail-link?">:mailbox:</a> How to reach the maintainer
