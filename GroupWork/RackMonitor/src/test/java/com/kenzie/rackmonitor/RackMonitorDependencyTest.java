@@ -1,5 +1,6 @@
 package com.kenzie.rackmonitor;
-
+import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.*;
 import com.kenzie.rackmonitor.Rack;
 import com.kenzie.rackmonitor.RackMonitor;
 import com.kenzie.rackmonitor.clients.warranty.Warranty;
@@ -10,15 +11,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-
+import org.mockito.verification.VerificationMode;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import com.kenzie.rackmonitor.clients.wingnut.WingnutClient;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class RackMonitorDependencyTest {
@@ -56,11 +57,15 @@ public class RackMonitorDependencyTest {
         // GIVEN
         // The rack is set up with a single unhealthy server
         when(mockRack.getHealth()).thenReturn(unhealthyServerResult);
-
+        when(warrantyClient.getWarrantyForServer(testServer)).thenReturn(Warranty.nullWarranty());
         // WHEN
         rackMonitor.monitorRacks();
 
         // THEN
+        verify(mockRack, times(1)).getHealth();
+        verify(warrantyClient, times(1)).getWarrantyForServer(testServer);
+        verify(wingnutClient, times(1)).requestReplacement(mockRack, 1, Warranty.nullWarranty());
+        verifyNoMoreInteractions(wingnutClient, warrantyClient);
         // There were no exceptions
     }
 
@@ -68,13 +73,19 @@ public class RackMonitorDependencyTest {
     public void monitorRacks_withOneShakyServer_inspectsServer() throws Exception {
         // GIVEN
         // The rack is set up with a single shaky server
+
         when(mockRack.getHealth()).thenReturn(shakyServerResult);
+
+        // Mock the behavior of the WingnutClient's arrangeInspection method
+      //  doNothing().when(wingnutClient).requestInspection(any(Rack.class), anyInt());
 
         // WHEN
         rackMonitor.monitorRacks();
 
         // THEN
         // There were no exceptions
+       // verify(warrantyClient).getWarrantyForServer(testServer);
+        verify(wingnutClient).requestInspection(mockRack,1);
     }
 
     @Test
