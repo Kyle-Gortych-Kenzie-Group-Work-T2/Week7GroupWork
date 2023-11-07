@@ -12,9 +12,9 @@ descript
  
 ### :hammer_and_wrench: Tools :
 
-| Version Control | Build System | Languages |
-| --------------- | ------------ | --------- |
-| <img src="https://img.shields.io/badge/Git-white?style=plastic&logo=git&logoColor=red" title="Git" alt="Git" height="30"/> | <img src="https://img.shields.io/badge/Gradle-white?style=plastic&logo=gradle&logoColor=black" title="gradle" alt="gradle" height="30"/> | <img src="https://custom-icon-badges.demolab.com/badge/Java-white.svg?&sytle=plastic&logo=java" title="Java" alt="Java" height="30"/> |
+| Build System | Languages |
+| ------------ | --------- |
+| <img src="https://img.shields.io/badge/Gradle-white?style=plastic&logo=gradle&logoColor=black" title="gradle" alt="gradle" height="30"/> | <img src="https://custom-icon-badges.demolab.com/badge/Java-white.svg?&sytle=plastic&logo=java" title="Java" alt="Java" height="30"/> |
 </div>
 <br>
 
